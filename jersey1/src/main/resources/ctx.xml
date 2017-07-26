@@ -13,6 +13,6 @@
     <bean class="ru.hh.test.jersey.Dao"/>
 
     <bean class="javax.ws.rs.core.CacheControl" scope="singleton" name="noCache">
-        <property name="mustRevalidate" value="true"/>
+        <property name="noCache" value="true"/>
     </bean>
 </beans>
