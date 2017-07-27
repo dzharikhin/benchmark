@@ -1,5 +1,6 @@
 package ru.hh.test.jersey.one;
 
+import com.fasterxml.jackson.databind.ObjectWriter;
 import java.util.List;
 import java.util.UUID;
 import javax.ws.rs.FormParam;
@@ -12,6 +13,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.StreamingOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -48,6 +50,13 @@ public class TestResource {
   @Produces(MediaType.APPLICATION_JSON)
   public Response testJson() {
     return Response.ok(dao.getTestDto()).cacheControl(cacheControl).build();
+  }
+
+  @Path("testGetJackson")
+  @GET
+  public Response testJackson() {
+    StreamingOutput stream = os -> dao.getWriter().writeValue(os, dao.getTestDto());
+    return Response.ok(stream).build();
   }
 
   @Path("testBuild")

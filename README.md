@@ -15,6 +15,10 @@ ab -n 10000 -c 4 'localhost:8082/rest/v2/testGet'
 ```bash
 ab -n 10000 -c 4 'localhost:8082/rest/v2/testGetJson'
 ```
++ *testGetJackson* - method returning json using Jackson directly - same version jersey1 and jersey2
+```bash
+ab -n 10000 -c 4 'localhost:8082/rest/v2/testGetJson'
+```
 >jersey uses different marshaller code, so json comparison may be unfair
 + *testBuild* - method building entity from input parameters(@QueryParam+@HeaderParam+@FormParam)
 ```bash
