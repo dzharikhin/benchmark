@@ -7,7 +7,16 @@ To measure performance I recommend to use [Apache Bench](https://httpd.apache.or
 * jersey 2 resource is deployed on localhost:8082/rest/v2 - V2App
 * spring mvc resource is deployed on localhost:8083/rest/mvc - MvcApp
 
+There's Client benchmark for **RUDE** comparison between jersey versions
+
 There are several cases to measure:
++ *string(**JERSEY ONLY**)* - returns contant [v1|v2] as string
++ *stringResponse(**JERSEY ONLY**)* - returns contant [v1|v2] as string wrapped in response
++ *byteArray(**JERSEY ONLY**)* - returns contant [v1|v2] as byte[]
++ *byteArrayResponse(**JERSEY ONLY**)* - returns contant [v1|v2] as byte[] wrapped in response
++ *streamingOutput(**JERSEY ONLY**)* - returns contant [v1|v2] as StreamingOutput
++ *streamingOutputResponse(**JERSEY ONLY**)* - returns contant [v1|v2] as StreamingOutput wrapped in response
+
 + *testGet* - method returning xml of generated entity
 ```bash
 ab -n 10000 -c 4 'localhost:808[n]/rest/[v1|v2|mvc]/testGet'

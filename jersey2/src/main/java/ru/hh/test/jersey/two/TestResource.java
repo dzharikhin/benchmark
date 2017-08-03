@@ -34,9 +34,41 @@ public class TestResource {
     this.cacheControl = cacheControl;
   }
 
+  @Path("string")
   @GET
   public String version() {
     return VERSION;
+  }
+
+  @Path("stringResponse")
+  @GET
+  public Response versionAsStringResponse() {
+    return Response.ok(VERSION).build();
+  }
+
+  @Path("byteArray")
+  @GET
+  public byte[] versionAsByteArray() {
+    return VERSION.getBytes();
+  }
+
+  @Path("byteArrayResponse")
+  @GET
+  public Response versionAsByteArrayResponse() {
+    return Response.ok(VERSION.getBytes()).build();
+  }
+
+  @Path("streamingOutput")
+  @GET
+  public StreamingOutput versionAsStreamingOutput() {
+    return os -> os.write(VERSION.getBytes());
+  }
+
+  @Path("streamingOutputResponse")
+  @GET
+  public Response versionAsStreamingOutputResponse() {
+    StreamingOutput streamingOutput = os -> os.write(VERSION.getBytes());
+    return Response.ok(streamingOutput).build();
   }
 
   @Path("testGet")

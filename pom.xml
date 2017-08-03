@@ -13,6 +13,7 @@
         <module>jersey2</module>
         <module>jersey-test-infra</module>
         <module>springmvc</module>
+        <module>client</module>
     </modules>
 
     <dependencyManagement>
