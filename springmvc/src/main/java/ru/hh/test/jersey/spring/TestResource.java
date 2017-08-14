@@ -27,7 +27,7 @@ public class TestResource {
     this.dao = dao;
   }
 
-  @RequestMapping(method = GET)
+  @RequestMapping(value = "/string", method = GET)
   public @ResponseBody String version() {
     return VERSION;
   }

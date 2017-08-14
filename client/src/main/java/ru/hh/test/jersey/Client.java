@@ -17,9 +17,9 @@ public class Client {
   private static final HttpHost v1HttpHost = new HttpHost("localhost", 8081, "http");
   private static final HttpRequest v1StringHttpRequest = new HttpGet("/rest/v1/string");
   private static final HttpRequest v1JacksonHttpRequest = new HttpGet("/rest/v1/testGetJackson");
-  private static final HttpHost v2HttpHost = new HttpHost("localhost", 8082, "http");
-  private static final HttpRequest v2StringHttpRequest = new HttpGet("/rest/v2/string");
-  private static final HttpRequest v2JacksonHttpRequest = new HttpGet("/rest/v2/testGetJackson");
+  private static final HttpHost v2HttpHost = new HttpHost("localhost", 8084, "http");
+  private static final HttpRequest v2StringHttpRequest = new HttpGet("/rest/resteasy/string");
+  private static final HttpRequest v2JacksonHttpRequest = new HttpGet("/rest/resteasy/testGetJackson");
 
   private static final long TICK = TimeUnit.SECONDS.toMillis(1);
 
@@ -31,7 +31,7 @@ public class Client {
 
 
     try (CloseableHttpClient httpClient = HttpClients.createMinimal(poolingHttpClientConnectionManager)) {
-      int testTime = 10;
+      int testTime = 30;
       System.out.println("Testing v1 string:");
       testResourse(httpClient, testTime, v1HttpHost, v1StringHttpRequest);
       System.out.println();
