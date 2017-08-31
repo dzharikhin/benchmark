@@ -2,6 +2,7 @@ package ru.hh.test.resteasy;
 
 import java.util.List;
 import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -12,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.CacheControl;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.StreamingOutput;
@@ -29,10 +31,13 @@ public class TestResource {
   private final Dao dao;
   private final CacheControl cacheControl;
 
+  private final HttpServletRequest request;
+
   @Autowired
-  public TestResource(Dao dao, @Qualifier("noCache") CacheControl cacheControl) {
+  public TestResource(Dao dao, @Qualifier("noCache") CacheControl cacheControl, @Context HttpServletRequest request) {
     this.dao = dao;
     this.cacheControl = cacheControl;
+    this.request = request;
   }
 
   @Path("string")
@@ -96,7 +101,7 @@ public class TestResource {
   @Path("testBuild")
   @POST
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public TestDto testIncoming(@HeaderParam("anInt") int anInt, @QueryParam("string") List<String> strings, @FormParam("uuid") UUID uuid) {
+  public TestDto testIncoming(@Context HttpServletRequest request, @HeaderParam("anInt") int anInt, @QueryParam("string") List<String> strings, @FormParam("uuid") UUID uuid) {
     TestDto testDto = new TestDto();
     testDto.anInt = anInt;
     testDto.strings = strings;
