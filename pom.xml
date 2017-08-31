@@ -11,6 +11,7 @@
     <modules>
         <module>java</module>
         <module>jersey</module>
+        <module>jmh-tests</module>
     </modules>
 
     <build>
