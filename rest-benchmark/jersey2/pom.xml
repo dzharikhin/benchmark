@@ -3,16 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>jersey-benchmark</artifactId>
-        <groupId>ru.hh.test</groupId>
+        <artifactId>rest-benchmark</artifactId>
+        <groupId>org.jrx.test</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jersey-2</artifactId>
+    <artifactId>jersey2</artifactId>
 
     <properties>
-        <jersey.version>2.26-b07</jersey.version>
         <jersey.bridge.version>2.26-b07</jersey.bridge.version>
     </properties>
 
@@ -27,7 +26,7 @@
         </dependency>
 
         <dependency>
-            <groupId>ru.hh.test</groupId>
+            <groupId>org.jrx.test</groupId>
             <artifactId>jersey-test-infra</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
@@ -56,7 +55,7 @@
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring4</artifactId>
-            <version>${jersey.version}</version>
+            <version>${common.jersey2.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -79,17 +78,17 @@
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
-            <version>${jersey.version}</version>
+            <version>${common.jersey2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
-            <version>${jersey.version}</version>
+            <version>${common.jersey2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
-            <version>${jersey.version}</version>
+            <version>${common.jersey2.version}</version>
             <scope>runtime</scope>
             <exclusions>
                 <exclusion>
