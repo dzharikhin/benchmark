@@ -117,7 +117,7 @@
     <properties>
         <junit.version>4.12</junit.version>
         <spring.version>5.1.6.RELEASE</spring.version>
-        <jetty.version>9.4.15.v20190215</jetty.version>
+        <jetty.version>9.4.22.v20191022</jetty.version>
         <http.client.version>4.5.8</http.client.version>
         <common.jackson.version>2.9.8</common.jackson.version>
         <!--to provide common annotations etc-->
