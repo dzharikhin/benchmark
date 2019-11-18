@@ -1,5 +1,7 @@
 package jmh.test;
 
+import ch.qos.logback.classic.spi.ThrowableProxy;
+import ch.qos.logback.classic.spi.ThrowableProxyUtil;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -12,9 +14,6 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -55,12 +54,8 @@ public class PrintStackTraceVsStackWalker {
   private static final class PrintingStackStackedCall extends StackedCall {
     @Override
     void printStack(Blackhole bh) {
-      try (var baos = new ByteArrayOutputStream(); var writer = new PrintWriter(baos)) {
-        Exception exception = new Exception();
-        exception.printStackTrace(writer);
-        bh.consume(baos.toString());
-      } catch (IOException ignored) {
-      }
+      ThrowableProxy throwableProxy = new ThrowableProxy(new Exception());
+      bh.consume(ThrowableProxyUtil.asString(throwableProxy));
     }
   }
 
